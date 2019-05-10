@@ -58,6 +58,57 @@ class Custom_Post_Widget extends WP_Widget {
 		</p>
 
 		<?php
+
+		// Dropdown Menu
+
+		$options = array();
+		$post_type_query = new WP_Query(
+			array (
+				'posts_per_page' => -1
+			)
+		);
+
+		$post_array = $post_type_query->posts;
+		$options = wp_list_pluck( $post_array, 'post_title', 'ID' );
+
+		?>
+
+		<p>
+			<label for="<?php echo $this->get_field_id( 'select_first' ); ?>">
+				<?php _e( 'Select 1st Post', 'text_domain' ); ?>
+			</label>
+			<select name="<?php echo $this->get_field_name( 'select_first' ); ?>" id="<?php echo $this->get_field_id( 'select_first' ); ?>" class="widefat">
+				<?php
+				foreach ( $options as $key => $name ) {
+					echo '<option value="' . esc_attr( $key ) . '" id="' . esc_attr( $key ) . '" '. selected( $select, $key, false ) . '>'. $name . '</option>';
+				} ?>
+			</select>	
+		</p>
+
+		<p>
+			<label for="<?php echo $this->get_field_id( 'select_second' ); ?>">
+				<?php _e( 'Select 2nd Post', 'text_domain' ); ?>
+			</label>
+			<select name="<?php echo $this->get_field_name( 'select_second' ); ?>" id="<?php echo $this->get_field_id( 'select_second' ); ?>" class="widefat">
+				<?php
+				foreach ( $options as $key => $name ) {
+					echo '<option value="' . esc_attr( $key ) . '" id="' . esc_attr( $key ) . '" '. selected( $select2, $key, false ) . '>'. $name . '</option>';
+				} ?>
+			</select>	
+		</p>
+
+		<p>
+			<label for="<?php echo $this->get_field_id( 'select_third' ); ?>">
+				<?php _e( 'Select 3rd Post', 'text_domain' ); ?></label>
+			<select name="<?php echo $this->get_field_name( 'select_third' ); ?>" id="<?php echo $this->get_field_id( 'select_third' ); ?>" class="widefat">
+				<?php
+				foreach ( $options as $key => $name ) {
+					echo '<option value="' . esc_attr( $key ) . '" id="' . esc_attr( $key ) . '" '. selected( $select3, $key, false ) . '>'. $name . '</option>';
+				} ?>
+			</select>	
+		</p>
+
+		<?php
 	}
 }
 
