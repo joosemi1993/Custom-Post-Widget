@@ -45,6 +45,19 @@ class Custom_Post_Widget extends WP_Widget {
 		);
 
 		extract( wp_parse_args( ( array ) $instance, $defaults ) ); 
+
+		// Widget Title
+
+		?>
+
+		<p>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>">
+				<?php _e( 'Widget Title', 'text_domain' ); ?>
+			</label>
+			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
+		</p>
+
+		<?php
 	}
 }
 
