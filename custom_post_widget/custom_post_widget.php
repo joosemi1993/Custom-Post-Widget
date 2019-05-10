@@ -24,3 +24,21 @@ You should have received a copy of the GNU General Public License
 along with Custom Post Widget.
 
 */
+
+class Custom_Post_Widget extends WP_Widget {
+	public function __construct() {
+		parent::__construct(
+			'custom_post_widget',
+			__('Custom Post Widget', 'text_domain'),
+			array(
+				'customize_selective_refresh' => true,
+			)
+		)
+	}
+}
+
+function reguster_custom_posts_in_widget() {
+	register_widget( 'Custom_Post_Widget' );
+}
+
+add_action( 'widgets_init', 'register_custom_posts_in_widget' );
