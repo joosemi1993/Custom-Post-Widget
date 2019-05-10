@@ -110,6 +110,16 @@ class Custom_Post_Widget extends WP_Widget {
 
 		<?php
 	}
+
+	public function update( $new_instance, $old_instance ) {
+		$instance = $old_instance;
+		$instance['title'] = isset( $new_instance['title'] ) ? wp_strip_all_tags( $new_instance['title'] ) : '';
+		$instance['select_first'] = isset( $new_instance['select_first'] ) ? wp_strip_all_tags( $new_instance['select_first'] ) : '';
+		$instance['select_second'] = isset( $new_instance['select_second'] ) ? wp_strip_all_tags( $new_instance['select_second'] ) : '';
+		$instance['select_third'] = isset( $new_instance['select_third'] ) ? wp_strip_all_tags( $new_instance['select_third'] ) : '';
+
+		return $instance;
+	}
 }
 
 function reguster_custom_posts_in_widget() {
