@@ -35,6 +35,17 @@ class Custom_Post_Widget extends WP_Widget {
 			)
 		)
 	}
+
+	public function form( $instance ) {
+		$defaults = array(
+			'title'
+			'select_first'	=> '',
+			'select_second'	=> '02',
+			'select_third'	=> '03'
+		);
+
+		extract( wp_parse_args( ( array ) $instance, $defaults ) ); 
+	}
 }
 
 function reguster_custom_posts_in_widget() {
